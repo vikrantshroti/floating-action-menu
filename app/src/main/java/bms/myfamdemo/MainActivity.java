@@ -12,9 +12,16 @@ import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
+    //floating action buttons - fab is menu & fab1,fab2,fab3 are buttons
     FloatingActionButton fab, fab1, fab2, fab3;
+
+    //fab layout
     LinearLayout fabLayout1, fabLayout2, fabLayout3;
+
+    //layout for background
     View fabBGLayout;
+
+    //boolean for detecting fab open or not
     boolean isFABOpen = false;
 
     @Override
@@ -25,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //casting widgets
         fabLayout1 = findViewById(R.id.fabLayout1);
         fabLayout2 = findViewById(R.id.fabLayout2);
         fabLayout3 = findViewById(R.id.fabLayout3);
@@ -34,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         fab3 = findViewById(R.id.fab3);
         fabBGLayout = findViewById(R.id.fabBGLayout);
 
+        //onClick listener for fab
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //onClick listener for background
         fabBGLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,25 +64,36 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //show fab menus
     private void showFABMenu() {
         isFABOpen = true;
+
+        //changing visibility
         fabLayout1.setVisibility(View.VISIBLE);
         fabLayout2.setVisibility(View.VISIBLE);
         fabLayout3.setVisibility(View.VISIBLE);
         fabBGLayout.setVisibility(View.VISIBLE);
 
+        //animating widgets
         fab.animate().rotationBy(180);
         fabLayout1.animate().translationY(-getResources().getDimension(R.dimen.standard_55));
         fabLayout2.animate().translationY(-getResources().getDimension(R.dimen.standard_100));
         fabLayout3.animate().translationY(-getResources().getDimension(R.dimen.standard_145));
     }
 
+    //close fab menus
     private void closeFABMenu() {
         isFABOpen = false;
+
+        //changing visibility
         fabBGLayout.setVisibility(View.GONE);
+
+        //animating widgets
         fab.animate().rotationBy(-180);
         fabLayout1.animate().translationY(0);
         fabLayout2.animate().translationY(0);
+
+        //listener for fab which is considered menu
         fabLayout3.animate().translationY(0).setListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animator) {

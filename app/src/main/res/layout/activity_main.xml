@@ -88,7 +88,6 @@
             app:fabSize="mini"/>
     </LinearLayout>
 
-    <!--todo change app layout behaviour-->
     <LinearLayout
         android:id="@+id/fabLayout3"
         android:layout_width="wrap_content"
@@ -117,7 +116,6 @@
             app:fabSize="mini"/>
     </LinearLayout>
 
-    <!--todo change app layout behaviour-->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
